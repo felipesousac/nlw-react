@@ -17,8 +17,17 @@ export function App() {
       <div className="h-px bg-slate-700" /> {/*Line separator*/}
       <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
         <NewNoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard
+          date={new Date()}
+          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae animi
+        aliquid aliquam vero sit accusantium recusandae aperiam dolorum minima,
+        sint, explicabo perspiciatis? Voluptate veniam iusto dolorum sunt
+        provident corporis architecto. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Beatae animi aliquid aliquam vero sit accusantium
+        recusandae aperiam dolorum minima, sint, explicabo perspiciatis?
+        Voluptate veniam iusto dolorum sunt provident corporis architecto."
+        />
+        <NoteCard date={new Date()} content="This was bring by props" />
       </div>
     </div>
   );
