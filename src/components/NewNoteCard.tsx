@@ -2,8 +2,21 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { X } from "lucide-react";
+import { ChangeEvent, useState } from "react";
 
 export function NewNoteCard() {
+  const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
+
+  function handleClick() {
+    setShouldShowOnboarding(false);
+  }
+
+  function handleContentChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    if (e.target.value == "") {
+      setShouldShowOnboarding(true);
+    }
+  }
+
   return (
     <Dialog.Root>
       <Dialog.Trigger
@@ -31,22 +44,33 @@ export function NewNoteCard() {
             <span className="text-sm font-medium text-slate-200">
               Adicionar nota
             </span>
-            <p className="text-sm leading-6 text-slate-300">
-              Comece{" "}
-              <button className="text-lime-400 hover:underline font-medium">
-                gravando uma nota
-              </button>{" "}
-              em áudio ou se preferir{" "}
-              <button className="text-lime-400 hover:underline font-medium">
-                utilize apenas texto
-              </button>
-              .
-            </p>
+            {shouldShowOnboarding ? (
+              <p className="text-sm leading-6 text-slate-300">
+                Comece{" "}
+                <button className="text-lime-400 hover:underline font-medium">
+                  gravando uma nota
+                </button>{" "}
+                em áudio ou se preferir{" "}
+                <button
+                  onClick={handleClick}
+                  className="text-lime-400 hover:underline font-medium"
+                >
+                  utilize apenas texto
+                </button>
+                .
+              </p>
+            ) : (
+              <textarea
+                autoFocus
+                className="text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none"
+                onChange={handleContentChange}
+              />
+            )}
           </div>
 
           <button
             type="button"
-            className="w-full bg-lime-400 text-center py-4 text-sm text-lime-950 outline-none font-medium hover:bg-lime-500"
+            className="w-full bg-lime-400 text-center py-4 text-sm text-lime-950 outline-none font-bold hover:bg-lime-500"
           >
             Salvar nota
           </button>
