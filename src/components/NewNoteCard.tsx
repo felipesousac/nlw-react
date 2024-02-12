@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { toast } from "sonner";
 
 interface NewNoteCardProps {
@@ -103,7 +103,7 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-        <Dialog.Content className="flex flex-col overflow-hidden fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] max-w-[640px] w-full bg-slate-700 rounded outline-none">
+        <Dialog.Content className="flex flex-col overflow-hidden fixed inset-0 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:h-[60vh] max-w-[640px] w-full bg-slate-700 md:rounded outline-none">
           <Dialog.Close
             onClick={() => setIsRecording(false)}
             className="absolute right-0 top-0 p-1.5 bg-slate-800 text-slate-400 hover:text-slate-200"
