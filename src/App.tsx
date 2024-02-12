@@ -47,7 +47,7 @@ export function App() {
       : notes;
 
   return (
-    <div className="mx-auto max-w-6xl my-12 space-y-6 ">
+    <div className="mx-auto max-w-6xl my-12 space-y-6">
       <img src={logo} alt="nlw expert logo" />
       <form className="w-full">
         <input
